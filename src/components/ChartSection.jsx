@@ -1,0 +1,120 @@
+import React from "react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend,
+  Filler,
+  Title,
+} from "chart.js";
+import { Box, Typography } from "@mui/material";
+
+ChartJS.register(
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend,
+  Filler,
+  Title
+);
+
+const getRandomColor = () =>
+  `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`;
+
+const ChartSection = ({ data, multiCounty = false }) => {
+  const isMulti =
+    multiCounty || (typeof data === "object" && !Array.isArray(data));
+
+  const labels =
+    isMulti && data && Object.values(data).length
+      ? Object.values(data)[0]?.map((d) => d.date) ?? []
+      : Array.isArray(data)
+      ? data.map((d) => d.date)
+      : [];
+
+  const datasets = isMulti
+    ? Object.entries(data ?? {}).map(([county, points]) => ({
+        label: county,
+        data: points.map((d) => d.value),
+        borderColor: getRandomColor(),
+        backgroundColor: "rgba(0,0,0,0.05)",
+        fill: false,
+        tension: 0.4,
+      }))
+    : Array.isArray(data)
+    ? [
+        {
+          label: "Value",
+          data: data.map((d) => d.value),
+          borderColor: "#1976d2",
+          backgroundColor: "rgba(25, 118, 210, 0.2)",
+          fill: true,
+          tension: 0.3,
+        },
+      ]
+    : [];
+
+  if ((labels?.length ?? 0) === 0 || (datasets?.length ?? 0) === 0) {
+    return (
+      <Box sx={{ p: 2 }}>
+        <Typography>No data available for the selected filters.</Typography>
+      </Box>
+    );
+  }
+
+  const chartData = {
+    labels,
+    datasets,
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: "top",
+      },
+      tooltip: {
+        mode: "index",
+        intersect: false,
+      },
+    },
+    scales: {
+      x: {
+        type: "category",
+        title: {
+          display: true,
+          text: "Date",
+        },
+        ticks: {
+          maxTicksLimit: 10,
+          autoSkip: true,
+        },
+      },
+      y: {
+        beginAtZero: false,
+        title: {
+          display: true,
+          text: "Value",
+        },
+      },
+    },
+  };
+
+  return (
+    <Box sx={{ p: 2 }}>
+      <Typography variant="h6" gutterBottom>
+        Indicator Over Time
+      </Typography>
+      <Line data={chartData} options={options} />
+    </Box>
+  );
+};
+
+export default ChartSection;
