@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-
+// Footer for the project
 const Footer = () => (
   <Box sx={{ py: 3, mt: 6, backgroundColor: "#f5f5f5", textAlign: "center" }}>
     <Typography variant="body2" color="textSecondary">

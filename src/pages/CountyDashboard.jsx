@@ -18,18 +18,18 @@ import {
 } from "../utils/IndicatorUtils";
 import { downloadCSV } from "../utils/csvDownloader";
 
-
+// Fetch available indicators and counties from utility functions
 const CountyDashboard = () => {
   const indicators = getIndicators();
   const counties = getCounties();
-
+    // State variables for filters and data
   const [selectedIndicator, setSelectedIndicator] = useState(indicators[0]);
   const [selectedCounty, setSelectedCounty] = useState(counties[0]);
-  const [startDate, setStartDate] = useState(dayjs().subtract(1, "year"));
-  const [endDate, setEndDate] = useState(dayjs());
+  const [startDate, setStartDate] = useState(dayjs().subtract(1, "year")); // Default: 1 year ago
+    const [endDate, setEndDate] = useState(dayjs()); // Default: today
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState({});
-
+    // Fetch data whenever filters change
   useEffect(() => {
     const fetchData = async () => {
       const series_id = getSeriesId(selectedIndicator, selectedCounty);
@@ -39,7 +39,7 @@ const CountyDashboard = () => {
         const response = await axios.get(
           `http://localhost:4000/api/observations?series_id=${series_id}`
         );
-
+          // Filter and clean the data
         const formatted = response.data.observations
           .filter((obs) => obs.value !== ".")
           .map((obs) => ({
@@ -50,7 +50,7 @@ const CountyDashboard = () => {
             dayjs(entry.date).isAfter(startDate) &&
             dayjs(entry.date).isBefore(endDate)
           );
-
+          // Store in data object under selectedCounty key
         setData({ [selectedCounty]: formatted });
       } catch (error) {
         console.error(`Error fetching data for ${selectedCounty}:`, error);

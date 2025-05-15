@@ -23,7 +23,7 @@ import {
   getSeriesId,
   getCounties,
 } from "../utils/IndicatorUtils";
-
+// Load initial indicator and county lists
 const CountyComparison = () => {
   const indicators = getIndicators();
   const counties = getCounties();
@@ -33,7 +33,7 @@ const CountyComparison = () => {
   const [startDate, setStartDate] = useState(dayjs().subtract(1, "year"));
   const [endDate, setEndDate] = useState(dayjs());
   const [data, setData] = useState({});
-
+    // Fetch data on filter change
   useEffect(() => {
     const fetchAllData = async () => {
       const newData = {};

@@ -1,3 +1,4 @@
+// Import React and necessary components from Chart.js and MUI
 import React from "react";
 import { Line } from "react-chartjs-2";
 import {
@@ -12,7 +13,7 @@ import {
   Title,
 } from "chart.js";
 import { Box, Typography } from "@mui/material";
-
+// Register the required Chart.js components for the line chart
 ChartJS.register(
   LineElement,
   CategoryScale,
@@ -23,21 +24,22 @@ ChartJS.register(
   Filler,
   Title
 );
-
+// Utility function to generate a random HSL color for line borders
 const getRandomColor = () =>
   `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`;
-
+// ChartSection component receives `data` and a `multiCounty` flag as props
 const ChartSection = ({ data, multiCounty = false }) => {
+    // Determine if the data contains multiple counties (multi-series line chart)
   const isMulti =
     multiCounty || (typeof data === "object" && !Array.isArray(data));
-
+    // Extract labels (dates) for the x-axis from the data
   const labels =
     isMulti && data && Object.values(data).length
       ? Object.values(data)[0]?.map((d) => d.date) ?? []
       : Array.isArray(data)
       ? data.map((d) => d.date)
       : [];
-
+    // Construct the datasets for the line chart
   const datasets = isMulti
     ? Object.entries(data ?? {}).map(([county, points]) => ({
         label: county,
@@ -59,6 +61,7 @@ const ChartSection = ({ data, multiCounty = false }) => {
         },
       ]
     : [];
+    // Handle edge case when there's no data to display
 
   if ((labels?.length ?? 0) === 0 || (datasets?.length ?? 0) === 0) {
     return (
@@ -67,12 +70,12 @@ const ChartSection = ({ data, multiCounty = false }) => {
       </Box>
     );
   }
-
+    // Define the structure of the chart data
   const chartData = {
     labels,
     datasets,
   };
-
+    // Define chart configuration options
   const options = {
     responsive: true,
     plugins: {
@@ -106,7 +109,7 @@ const ChartSection = ({ data, multiCounty = false }) => {
       },
     },
   };
-
+    // Render the chart and title inside a styled Box
   return (
     <Box sx={{ p: 2 }}>
       <Typography variant="h6" gutterBottom>

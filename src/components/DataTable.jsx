@@ -3,7 +3,7 @@ import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
   TablePagination
 } from "@mui/material";
-
+// DataTable component takes data and an optional 'searchTerm'
 const DataTable = ({ data, searchTerm = "" }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -23,12 +23,13 @@ const DataTable = ({ data, searchTerm = "" }) => {
         value: entry.value
       }))
   );
-
+    // pagination display
   const paginatedRows = allRows.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
 
+    // Handlers for pagination control
   const handleChangePage = (_, newPage) => setPage(newPage);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));

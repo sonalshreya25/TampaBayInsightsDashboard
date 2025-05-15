@@ -8,7 +8,7 @@ import {
   Box,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-
+// Define navigation routes for the header
 const routes = [
   { path: "/", label: "Home" },
   { path: "/dashboard", label: "County Dashboard" },

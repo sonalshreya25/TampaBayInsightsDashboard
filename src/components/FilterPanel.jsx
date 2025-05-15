@@ -9,6 +9,7 @@ import {
   Typography
 } from "@mui/material";
 
+// FilterPanel component accepts props for indicator and county filtering
 const FilterPanel = ({
   indicatorOptions,
   selectedIndicator,
@@ -17,7 +18,8 @@ const FilterPanel = ({
   selectedCounties,
   onCountiesChange
 }) => {
-  return (
+    return (
+        // Container Box to align controls vertically
     <Box display="flex" flexDirection="column" gap={3}>
       <FormControl fullWidth>
         <InputLabel>Select Indicator</InputLabel>
