@@ -43,6 +43,39 @@
 | Routing        | react-router-dom                  |
 
 ---
+### 🔌 Backend Functionality
+
+This project includes a lightweight **Node.js + Express** backend that acts as a **proxy server** for fetching data from the [FRED API](https://fred.stlouisfed.org/). It enhances security, avoids CORS issues, and allows flexible data processing.
+
+---
+
+#### Why We Use a Backend
+
+- **Secure the API Key:** Keeps your FRED API key hidden from the frontend.
+- **Bypass CORS:** Prevents browser restrictions on cross-origin requests.
+- **🛠Future Flexibility:** Easy to scale, cache responses, or add authentication.
+
+
+The backend listens at: http://localhost:4000/api/observations?series_id=XXXX
+
+
+It forwards the request to:  https://api.stlouisfed.org/fred/series/observations
+
+Along with:
+- `series_id`
+- your FRED `api_key`
+- file type set to `json`
+
+Then it returns the API response directly to the frontend in clean JSON format.
+
+---
+
+#### Technologies Used
+
+- **Node.js**
+- **Express.js**
+- **Axios** for making HTTP requests
+- **CORS** middleware to enable frontend access
 
 ---
 
@@ -66,7 +99,15 @@ git clone https://github.com/sonalshreya25/TampaBayInsightsDashboard.git
 
 # Move into the folder
 cd TampaBayInsightsDashboard
+### Start backend proxy server
 
+### If running for the first time
+npm init -y
+
+npm install express axios cors
+### Start proxy server
+node server\index.js
+## Steps to start Frontend application
 #### Install dependencies
 npm install
 
