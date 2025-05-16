@@ -149,20 +149,43 @@ Add more indicators in utils/IndicatorUtils.js
 
 ##  County Comparison Dashboard – Unemployment Rate (2015–2025)
 
+![Unemployment Rate](screenshots/UnemploymentRate201525.png)
 
-##  COVID-19 Spike (2020)
+###  COVID-19 Spike (2020)
 - All counties show a sharp **spike in unemployment** around April–May 2020.
 - **Polk County** peaks the highest (~18%), followed by **Hernando** and **Citrus**.
 
-## Post-COVID Recovery
+### Post-COVID Recovery
 - **Hillsborough**, **Pinellas**, and **Manatee** recovered quickly.
 - **Polk** and **Citrus** took longer to return to pre-COVID levels.
 
-##  Overall Trend
+###  Overall Trend
 - General **decline from 2015 to early 2020**.
 - **Stabilized** around 3–5% after 2021 with minor fluctuations.
 
-##  County Insights
+### County Insights
 - **Lowest average unemployment**: *Hillsborough*, *Pinellas*.
 - **Highest average unemployment**: *Polk*, *Citrus*, *Hernando*.
+
+## County Comparison Dashboard - Median Housefold Income(2015–2025)
+
+![Median Household Income](screenshots/medianHouseholdIncome.png)
+
+###  General Trend
+- All counties show a **steady increase** in median household income.
+- Growth accelerates noticeably **after 2020**.
+
+###  Top Counties (2023)
+- **Sarasota** and **Hillsborough** have the **highest median incomes**, exceeding **$75,000**.
+- **Manatee** and **Pinellas** also show strong growth.
+
+### Lower-Income Counties
+- **Citrus** and **Hernando** consistently have **lowest median incomes**, under **$60,000** until late 2022.
+- **Polk** shows improvement but stays below the top tier.
+
+###  Income Gap
+- Gap between highest and lowest counties **persists** but narrows slightly over time.
+- **Citrus** shows notable improvement in later years, reducing disparity.
+
+
 
