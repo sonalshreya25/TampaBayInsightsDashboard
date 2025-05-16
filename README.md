@@ -1,4 +1,6 @@
-# 🌴 Tampa Bay Insights Dashboard
+# Tampa Bay Insights Dashboard
+
+![Tampa Bay Insights Logo](public/tampaicon.webp)
 
 **Tampa Bay Insights** is a regional data intelligence platform that empowers policy-makers, researchers, and citizens by providing transparent and accessible insights into key economic and demographic indicators across counties in the Tampa Bay region.
 
@@ -43,7 +45,7 @@
 | Routing        | react-router-dom                  |
 
 ---
-### 🔌 Backend Functionality
+###  Backend Functionality
 
 This project includes a lightweight **Node.js + Express** backend that acts as a **proxy server** for fetching data from the [FRED API](https://fred.stlouisfed.org/). It enhances security, avoids CORS issues, and allows flexible data processing.
 
