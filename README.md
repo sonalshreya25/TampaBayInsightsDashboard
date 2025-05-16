@@ -183,9 +183,5 @@ Add more indicators in utils/IndicatorUtils.js
 - **Citrus** and **Hernando** consistently have **lowest median incomes**, under **$60,000** until late 2022.
 - **Polk** shows improvement but stays below the top tier.
 
-###  Income Gap
-- Gap between highest and lowest counties **persists** but narrows slightly over time.
-- **Citrus** shows notable improvement in later years, reducing disparity.
-
 
 
