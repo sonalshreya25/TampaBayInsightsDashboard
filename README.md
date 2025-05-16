@@ -90,7 +90,7 @@ Add more indicators in utils/IndicatorUtils.js
 ![Landing Page](./screenshots/LandingPage.png)
 
 ###  County Dashboard – Line Chart
-![County Dashboard 1](./screenshots/Countydasboard.png)
+![County Dashboard 1](./screenshots/CountyDasboard.png)
 
 ###  County Dashboard – Data Table & Download
 ![County Dashboard 2](./screenshots/countyDashboard1.png)
